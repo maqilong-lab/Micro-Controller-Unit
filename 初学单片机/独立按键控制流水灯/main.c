@@ -1,6 +1,6 @@
 #include <REGX52.H>
 
-void Delay(unsigned int xms)	
+void Delay(unsigned int xms)		
 {
 	unsigned char i, j;
 	while(xms--)
@@ -14,11 +14,10 @@ void Delay(unsigned int xms)
 	}
 }
 
-unsigned char LEDNum = 0;
 
 void main()
 {
-	P1 = ~0x01;
+	unsigned char LEDNum = 0;
 	while(1)
 	{
 		if(P3_0 == 0)
@@ -28,21 +27,7 @@ void main()
 			Delay(20);
 			
 			LEDNum++;
-			if(LEDNum >= 8)
-				LEDNum = 0;
-			P1 = ~(0x01<<LEDNum);
-		}
-		if(P3_1 == 0)
-		{
-			Delay(20);
-			while(P3_1 == 0);
-			Delay(20);
-			
-			if(LEDNum == 0)
-				LEDNum = 7;
-			else
-				LEDNum--;
-			P1 = ~(0x01<<LEDNum);
+			P1 =~ LEDNum;
 		}
 	}
 }
