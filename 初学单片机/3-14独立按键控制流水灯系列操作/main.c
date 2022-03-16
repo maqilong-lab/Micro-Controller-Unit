@@ -1,9 +1,9 @@
 #include <REGX52.H>
 
-void Delay1ms(xms)	
+void Delay(unsigned int xms)		
 {
 	unsigned char i, j;
-	while(xms)
+	while(xms--)
 	{
 		i = 2;
 		j = 239;
@@ -11,22 +11,23 @@ void Delay1ms(xms)
 		{
 			while (--j);
 		} while (--i);
-		xms--;
 	}
 }
 
 
 void main()
 {
+	unsigned char LEDNum = 0;
 	while(1)
 	{
 		if(P3_0 == 0)
 		{
-			Delay1ms(20);
-			while(P3_0 == 1);
-			Delay1ms(20);
+			Delay(20);
+			while(P3_0 == 0);
+			Delay(20);
 			
-			P1_0 =~ P1_0;
+			LEDNum++;
+			P1 =~ LEDNum;
 		}
 	}
 }
