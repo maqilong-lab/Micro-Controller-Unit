@@ -1,0 +1,5 @@
+".\Objects\mian.obj",
+".\Objects\Delay.obj",
+".\Objects\MatrixLED.obj" 
+TO ".\Objects\projrct" 
+PRINT(".\Listings\projrct.m51") RAMSIZE(256) 
